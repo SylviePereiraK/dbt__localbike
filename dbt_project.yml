@@ -36,7 +36,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 
 models:
-  +persist_docs:
+  persist_docs:
       relation: true
       columns: true
       
@@ -50,6 +50,8 @@ models:
         schema: stg_sales_database
       google_sheets:
         schema: stg_google_sheets
+      localbike:
+        schema: stg_localbike
 
     intermediate:
       materialized: view
@@ -57,7 +59,12 @@ models:
         schema: int_sales_database
       google_analytics:
         schema: int_google_analytics
+      localbike:
+        schema: int_localbike
+
     mart:
       schema: mart
       materialized: table
+    localbike:
+        schema: mrt_localbike
 

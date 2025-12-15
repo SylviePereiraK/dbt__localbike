@@ -1,0 +1,6 @@
+version: 2
+
+models:
+  - name: mrt_localbike__daily_report
+    description: '{{ doc("mrt__localbike__daily_report") }}'
+  
