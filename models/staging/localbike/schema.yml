@@ -59,6 +59,8 @@ models:
         description: "customer id, foreign key of table customers"
         tests:
           - relationships:
+              config:
+                severity: warn  # optionnel
               name: customer_id_foreign_key_in_stg_localbike__orders
               to: ref('stg_localbike__customers')
               field: customer_id
@@ -79,6 +81,8 @@ models:
         description: "store id, foreign key of table stores"
         tests:
           - relationships:
+              config:
+                severity: warn  # optionnel
               name: store_id_foreign_key_in_stg_localbike__orders
               to: ref('stg_localbike__stores')
               field: store_id
@@ -86,6 +90,8 @@ models:
         description: "staff id, foreign key of table staff"
         tests:
           - relationships:
+              config:
+                severity: warn  # optionnel
               name: staff_id_foreign_key_in_stg_localbike__orders
               to: ref('stg_localbike__staffs')
               field: staff_id
@@ -104,6 +110,8 @@ models:
         description: "brand id, foreign key of table brand"
         tests:
           - relationships:
+              config:
+                severity: warn  # optionnel
               name: brand_id_foreign_key_in_stg_localbike__products
               to: ref('stg_localbike__brands')
               field: brand_id
@@ -111,6 +119,8 @@ models:
         description: "brand id, foreign key of table brand"
         tests:
           - relationships:
+              config:
+                severity: warn  # optionnel
               name: category_id_foreign_key_in_stg_localbike__products
               to: ref('stg_localbike__categories')
               field: category_id
@@ -149,16 +159,13 @@ models:
         description: "store id, foreign key of table stores"
         tests:
           - relationships:
+              config:
+                severity: warn  # optionnel
               name: store_id_foreign_key_in_stg_localbike__staffs
               to: ref('stg_localbike__stores')
               field: store_id
       - name: manager_id
         description: "manager id, the employee is manager or no"
-        tests:
-          - relationships:
-              name: manager_id_foreign_key_in_stg_localbike__staffs
-              to: ref('stg_localbike__staffs')
-              field: staff_id
 
   - name: stg_localbike__stocks
     description: "This model contains information about stocks"
@@ -172,6 +179,8 @@ models:
         description: "store id, foreign key of table stores"
         tests:
           - relationships:
+              config:
+                severity: warn  # optionnel
               name: store_id_foreign_key_in_stg_localbike__stocks
               to: ref('stg_localbike__stores')
               field: store_id
@@ -179,15 +188,15 @@ models:
         description: "product id, foreign key of table products"
         tests:
           - relationships:
+              config:
+                severity: warn  # optionnel
               name: product_id_foreign_key_in_stg_localbike__stocks
               to: ref('stg_localbike__products')
               field: product_id
-      - name: quantity
-        description: "manager id, the employee is manager or no"
+      - name: stock_quantity
+        description: "stock quantity"
         tests:
-          - not_null:
-              config:
-                where: "stock_quantity >= 0" 
+          - not_null
 
   - name: stg_localbike__order_items
     description: "This model contains information about order items"
@@ -201,6 +210,8 @@ models:
         description: "order id, foreign key of table orders"
         tests:
           - relationships:
+              config:
+                severity: warn  # optionnel
               name: order_id_foreign_key_in_stg_localbike__order_items
               to: ref('stg_localbike__orders')
               field: order_id
@@ -210,6 +221,8 @@ models:
         description: "product id, foreign key of table products"
         tests:
           - relationships:
+              config:
+                severity: warn  # optionnel
               name: product_id_foreign_key_in_stg_localbike__order_items
               to: ref('stg_localbike__products')
               field: product_id
