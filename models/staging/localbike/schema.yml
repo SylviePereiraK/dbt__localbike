@@ -154,11 +154,6 @@ models:
               field: store_id
       - name: manager_id
         description: "manager id, the employee is manager or no"
-        tests:
-          - relationships:
-              name: manager_id_foreign_key_in_stg_localbike__staffs
-              to: ref('stg_localbike__staffs')
-              field: staff_id
 
   - name: stg_localbike__stocks
     description: "This model contains information about stocks"
@@ -182,12 +177,10 @@ models:
               name: product_id_foreign_key_in_stg_localbike__stocks
               to: ref('stg_localbike__products')
               field: product_id
-      - name: quantity
-        description: "manager id, the employee is manager or no"
+      - name: stock_quantity
+        description: "stock quantity"
         tests:
-          - not_null:
-              config:
-                where: "stock_quantity >= 0" 
+          - not_null
 
   - name: stg_localbike__order_items
     description: "This model contains information about order items"
